@@ -30,7 +30,7 @@ def clean(doc):
 
 
 # Read data from converted/compiled CSV
-df = pd.read_csv("data.csv")
+df = pd.read_csv("SAD_v1/SAD_v1.csv")
 
 
 # Preview the first 5 lines of the loaded data
@@ -38,16 +38,16 @@ print(df.head())
 
 
 # Convert label column to numeric labels
-df.loc[df.Label == "Work/School Productivity", 'Label'] = "0"
-df.loc[df.Label == "Financial Problem", 'Label'] = "1"
-df.loc[df.Label == "Personal/Social Issues", 'Label'] = "2"
-df.loc[df.Label == "Family Issues", 'Label'] = "3"
-df.loc[df.Label == "Health or Physical Pain", 'Label'] = "4"
-df.loc[df.Label == "Travel/Holiday Stress", 'Label'] = "5"
-df.loc[df.Label == "Everyday Decision Making", 'Label'] = "6"
-df.loc[df.Label == "Confidence Issue", 'Label'] = "7"
-df.loc[df.Label == "Exhaustion/Fatigue", 'Label'] = "8"
-df.loc[df.Label == "Other", 'Label'] = "9"
+df.loc[df.Label == "Work", 'Label'] = "0"
+df.loc[df.Label == "Social Relationships", 'Label'] = "1"
+df.loc[df.Label == "School", 'Label'] = "2"
+df.loc[df.Label == "Other", 'Label'] = "3"
+df.loc[df.Label == "Health, Fatigue, or Physical Pain", 'Label'] = "4"
+df.loc[df.Label == "Financial Problem", 'Label'] = "5"
+df.loc[df.Label == "Family Issues", 'Label'] = "6"
+df.loc[df.Label == "Everyday Decision Making", 'Label'] = "7"
+df.loc[df.Label == "Emotional Turmoil", 'Label'] = "8"
+
 df["Label"] = df["Label"].astype(int)
 
 # Read each document and clean it.
@@ -65,7 +65,6 @@ Category5 = CategoryLabels.count(5)
 Category6 = CategoryLabels.count(6)
 Category7 = CategoryLabels.count(7)
 Category8 = CategoryLabels.count(8)
-Category9 = CategoryLabels.count(9)
 
 print(" ")
 print("===============")
@@ -79,17 +78,15 @@ print('Category5 contains:', Category5, float(Category5) / float(len(CategoryLab
 print('Category6 contains:', Category6, float(Category6) / float(len(CategoryLabels)))
 print('Category7 contains:', Category7, float(Category7) / float(len(CategoryLabels)))
 print('Category8 contains:', Category8, float(Category8) / float(len(CategoryLabels)))
-print('Category9 contains:', Category9, float(Category9) / float(len(CategoryLabels)))
 
 # Assign Bins
-dataset1 = 799
-dataset2_3 = 3731
+dataset = 5480
 
 
 # TODO: Update this assignment method
 df['is_train'] = 0
 for x in range(0, len(df)):
-    if x <= dataset1:
+    if x <= dataset:
         df['is_train'][x] = 1
 
 
@@ -126,8 +123,8 @@ for x in range(0, len(X)):
 
 
 # Create final dataframes
-TargetNamesStrings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-TargetNames = np.asarray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+TargetNamesStrings = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+TargetNames = np.asarray([0, 1, 2, 3, 4, 5, 6, 7, 8])
 train = pd.DataFrame(featurized_training_data, columns=FeatureNames)
 test = pd.DataFrame(featurized_test_data, columns=FeatureNames)
 train['categories'] = pd.Categorical.from_codes(training_labels, TargetNames)
