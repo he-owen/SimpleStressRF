@@ -40,10 +40,10 @@ print(df.head())
 #-1 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
 # -1 0 1 2
 # Convert label column to numeric labels
-df.loc[df.Hat == "-1", 'Hat'] = "-1"
-df.loc[df.Hat == "0", 'Hat'] = "0"
-df.loc[df.Hat == "1", 'Hat'] = "1"
-df.loc[df.Hat == "2", 'Hat'] = "2"
+df.loc[df.Hat == "-1", 'Hat'] = "0"
+df.loc[df.Hat == "0", 'Hat'] = "1"
+df.loc[df.Hat == "1", 'Hat'] = "2"
+df.loc[df.Hat == "2", 'Hat'] = "3"
 
 df["Hat"] = df["Hat"].astype(int)
 
@@ -83,9 +83,10 @@ for x in range(0, len(df)):
 # Create two new dataframes, one with the training rows, one with the test rows
 train, test = df[df['is_train'] != 0], df[df['is_train'] == 0]
 training_corpus = train['AnswerCombined'].values
-training_labels = train['Hat'].values
+# Added + 1 to deal with the negative 1 problem
+training_labels = train['Hat'].values + 1
 test_corpus = test['AnswerCombined'].values
-test_labels = test['Hat'].values
+test_labels = test['Hat'].values + 1
 #print("training_corpus: ", training_corpus) -> good, all answercombined
 #print("Training labels: ", training_labels) #-> good, all Hat vals
 #print("test_corpus: ", test_corpus)
@@ -118,15 +119,13 @@ for x in range(0, len(X)):
 
 # Create final dataframes
 # NaN PROBLEM HERE
-TargetNamesStrings = ["0", "1", "2", "-1"]
-TargetNames = np.asarray([0, 1, 2, -1])
-print("training_labels: \n", training_labels, "TargetNames: ", TargetNames)
+TargetNamesStrings = ["0", "1", "2", "3"]
+TargetNames = np.asarray([0, 1, 2, 3])
 
 train = pd.DataFrame(featurized_training_data, columns=FeatureNames)
 test = pd.DataFrame(featurized_test_data, columns=FeatureNames)
 train['categories'] = pd.Categorical.from_codes(training_labels, TargetNames)
 test['categories'] = pd.Categorical.from_codes(test_labels, TargetNames)
-print("train['categories']:\n", train['categories'])
 
 # Show the number of observations for the test and training dataframes
 print(" ")
