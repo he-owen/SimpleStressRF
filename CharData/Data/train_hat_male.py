@@ -131,8 +131,8 @@ for x in range(0, len(X)):
 
 
 # Create final dataframes
-TargetNamesStrings = ["0", "1", "2", "3"]
-TargetNames = np.asarray([0, 1, 2, 3])
+TargetNamesStrings = ["0", "1", "2", "3", "4", "5", "6", "7"]
+TargetNames = np.asarray([0, 1, 2, 3, 4, 5, 6, 7])
 
 train = pd.DataFrame(featurized_training_data, columns=FeatureNames)
 test = pd.DataFrame(featurized_test_data, columns=FeatureNames)
