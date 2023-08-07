@@ -34,12 +34,16 @@ df = pd.read_csv("female_data.csv")
 # Preview the first 5 lines of the loaded data
 print(df.head())
 
-# Data Values: -1 0 1 2
+# Data Values: -1 0 1 2 3 4 5 6
 # Convert label column to numeric labels
 df.loc[df.Hat == "-1", 'Hat'] = "0"
 df.loc[df.Hat == "0", 'Hat'] = "1"
 df.loc[df.Hat == "1", 'Hat'] = "2"
 df.loc[df.Hat == "2", 'Hat'] = "3"
+df.loc[df.Hat == "3", 'Hat'] = "4"
+df.loc[df.Hat == "4", 'Hat'] = "5"
+df.loc[df.Hat == "5", 'Hat'] = "6"
+df.loc[df.Hat == "6", 'Hat'] = "7"
 
 df["Hat"] = df["Hat"].astype(int)
 
@@ -53,6 +57,10 @@ Category0 = CategoryLabels.count(-1)
 Category1 = CategoryLabels.count(0)
 Category2 = CategoryLabels.count(1)
 Category3 = CategoryLabels.count(2)
+Category4 = CategoryLabels.count(3)
+Category5 = CategoryLabels.count(4)
+Category6 = CategoryLabels.count(5)
+Category7 = CategoryLabels.count(6)
 
 
 print(" ")
@@ -62,16 +70,28 @@ print('Category0 contains:', Category0, float(Category0) / float(len(CategoryLab
 print('Category1 contains:', Category1, float(Category1) / float(len(CategoryLabels)))
 print('Category2 contains:', Category2, float(Category2) / float(len(CategoryLabels)))
 print('Category3 contains:', Category3, float(Category3) / float(len(CategoryLabels)))
+print('Category4 contains:', Category4, float(Category4) / float(len(CategoryLabels)))
+print('Category5 contains:', Category5, float(Category5) / float(len(CategoryLabels)))
+print('Category6 contains:', Category6, float(Category6) / float(len(CategoryLabels)))
+print('Category7 contains:', Category7, float(Category7) / float(len(CategoryLabels)))
 
 Category0_data = df[df['Hat'] == -1]
 Category1_data = df[df['Hat'] == 0]
 Category2_data = df[df['Hat'] == 1]
 Category3_data = df[df['Hat'] == 2]
+Category4_data = df[df['Hat'] == 3]
+Category5_data = df[df['Hat'] == 4]
+Category6_data = df[df['Hat'] == 5]
+Category7_data = df[df['Hat'] == 6]
 
 Category0_train, Category0_test = train_test_split(Category0_data, test_size=0.2)
 Category1_train, Category1_test = train_test_split(Category1_data, test_size=0.2)
 Category2_train, Category2_test = train_test_split(Category2_data, test_size=0.2)
 Category3_train, Category3_test = train_test_split(Category3_data, test_size=0.2)
+Category4_train, Category4_test = train_test_split(Category4_data, test_size=0.2)
+Category5_train, Category5_test = train_test_split(Category5_data, test_size=0.2)
+Category6_train, Category6_test = train_test_split(Category6_data, test_size=0.2)
+Category7_train, Category7_test = train_test_split(Category7_data, test_size=0.2)
 
 train = pd.concat([Category0_train, Category1_train, Category2_train, Category3_train])
 test = pd.concat([Category0_test, Category1_test, Category2_test, Category3_test])
