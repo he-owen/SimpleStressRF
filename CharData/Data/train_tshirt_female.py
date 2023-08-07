@@ -48,7 +48,7 @@ df.loc[df.TShirt == "7", 'TShirt'] = "7"
 df.loc[df.TShirt == "8", 'TShirt'] = "8"
 df.loc[df.TShirt == "9", 'TShirt'] = "9"
 df.loc[df.TShirt == "10", 'TShirt'] = "10"
-#df.loc[df.TShirt == "11", 'TShirt'] = "11"
+df.loc[df.TShirt == "11", 'TShirt'] = "11"
 df.loc[df.TShirt == "12", 'TShirt'] = "12"
 
 df["TShirt"] = df["TShirt"].astype(int)
@@ -70,7 +70,7 @@ Category7 = CategoryLabels.count(7)
 Category8 = CategoryLabels.count(8)
 Category9 = CategoryLabels.count(9)
 Category10 = CategoryLabels.count(10)
-#Category11 = CategoryLabels.count(11)
+Category11 = CategoryLabels.count(11)
 Category12 = CategoryLabels.count(12)
 
 print(" ")
@@ -87,7 +87,7 @@ print('Category7 contains:', Category7, float(Category7) / float(len(CategoryLab
 print('Category8 contains:', Category8, float(Category8) / float(len(CategoryLabels)))
 print('Category9 contains:', Category9, float(Category9) / float(len(CategoryLabels)))
 print('Category10 contains:', Category10, float(Category10) / float(len(CategoryLabels)))
-#print('Category11 contains:', Category11, float(Category11) / float(len(CategoryLabels)))
+print('Category11 contains:', Category11, float(Category11) / float(len(CategoryLabels)))
 print('Category12 contains:', Category12, float(Category12) / float(len(CategoryLabels)))
 
 
@@ -102,7 +102,7 @@ Category7_data = df[df['TShirt'] == 7]
 Category8_data = df[df['TShirt'] == 8]
 Category9_data = df[df['TShirt'] == 9]
 Category10_data = df[df['TShirt'] == 10]
-#Category11_data = df[df['TShirt'] == 11]
+Category11_data = df[df['TShirt'] == 11]
 Category12_data = df[df['TShirt'] == 12]
 
 Category0_train, Category0_test = train_test_split(Category0_data, test_size=0.2)
@@ -116,7 +116,7 @@ Category7_train, Category7_test = train_test_split(Category7_data, test_size=0.2
 Category8_train, Category8_test = train_test_split(Category8_data, test_size=0.2)
 Category9_train, Category9_test = train_test_split(Category9_data, test_size=0.2)
 Category10_train, Category10_test = train_test_split(Category10_data, test_size=0.2)
-#Category11_train, Category11_test = train_test_split(Category11_data, test_size=0.2)
+Category11_train, Category11_test = train_test_split(Category11_data, test_size=0.2)
 Category12_train, Category12_test = train_test_split(Category12_data, test_size=0.2)
 
 
