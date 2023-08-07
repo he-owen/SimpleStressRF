@@ -35,7 +35,7 @@ df = pd.read_csv("female_data.csv")
 # Preview the first 5 lines of the loaded data
 print(df.head())
 
-# Data Values: -1 0 1 2 _ _ _ _ _ _ 9 10 11 12
+# Data Values: -1 0 1 2 3 4 5 6 7 8 9 10 11 12
 # Convert label column to numeric labels
 df.loc[df.Accessory == "-1", 'Accessory'] = "0"
 df.loc[df.Accessory == "0", 'Accessory'] = "1"
